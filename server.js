@@ -6,6 +6,9 @@ const app = express();
 const hbs = require('hbs');
 require('./hbs/helpers');
 
+// Obteniendo puerto para subier a heroku
+const port = process.env.PORT || 3000;
+
 // middleware ( /public es el directorio que e mostrará )
 app.use(express.static(__dirname + '/public'));
 
@@ -50,6 +53,7 @@ app.get('/about', (req, res) => {
 // });
 
 // Escuchando puerto 3000
-app.listen(3000, () => {
-    console.log('Escuchando peticiones en el puerto 3000');
+// Para subier a heroku hay que desconocer cual es el puerto
+app.listen(port, () => {
+    console.log(`Escuchando peticiones en el puerto ${ port }`);
 });
